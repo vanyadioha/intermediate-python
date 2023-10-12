@@ -46,16 +46,46 @@ colormode(255)
 #     mbe.setheading(choice(turns))
 
 # Draw a spirograph
-gap = 2
-for _ in range(int(360 / gap)):
-    r = randint(0, 255)
-    g = randint(0, 255)
-    b = randint(0, 255)
-    mbe.color((r, g, b))
-    mbe.circle(100)
-    mbe.setheading(mbe.heading() + gap)
+# gap = 2
+# for _ in range(int(360 / gap)):
+#     r = randint(0, 255)
+#     g = randint(0, 255)
+#     b = randint(0, 255)
+#     mbe.color((r, g, b))
+#     mbe.circle(100)
+#     mbe.setheading(mbe.heading() + gap)
+
+
+# Event Listeners
+# Etch-A-Sketch app
+def move_forward():
+    mbe.forward(10)
+
+
+def move_backward():
+    mbe.backward(10)
+
+
+def clockwise():
+    mbe.right(5)
+
+
+def counter_clockwise():
+    mbe.left(5)
+
+
+def clear():
+    mbe.reset()
+
 
 # Don't Write any code below this
-my_screen = Screen()
-my_screen.exitonclick()
-
+screen = Screen()
+# Event listeners start
+screen.listen()
+screen.onkeypress(move_forward, "w")
+screen.onkeypress(move_backward, "s")
+screen.onkeypress(clockwise, "d")
+screen.onkeypress(counter_clockwise, "a")
+screen.onkeypress(clear, "c")
+# Event listeners ends
+screen.exitonclick()
